@@ -5,5 +5,4 @@ const API = axios.create({
 });
 
 export const getAlerts = () => API.get("/api/alerts");
-
 export const createAlert = (data) => API.post("/api/alert", data);
