@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
 // (Optional) GET all data
 router.get("/", async (req, res) => {
   try {
-    const data = await Data.find().limit(100);
+    const data = await Data.find().limit(500);
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: err.message });
