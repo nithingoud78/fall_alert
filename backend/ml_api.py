@@ -18,6 +18,7 @@ def predict():
     gy = data["gy"]
     gz = data["gz"]
 
+    # Normalize
     ax = ax / 32768.0
     ay = ay / 32768.0
     az = az / 32768.0
@@ -31,7 +32,10 @@ def predict():
 
     prob = model.predict_proba(X)[0][1]
 
-    if prob > 0.85:
+    print("Fall Probability:", prob)
+
+    # 🔴 FIXED THRESHOLD
+    if prob > 0.7:
         return "fall"
     else:
         return "normal"
