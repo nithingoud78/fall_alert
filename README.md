@@ -1,87 +1,229 @@
-# Fall Detection System
+<p align="center">
+  <img src="docs/Banner/Banner.png" alt="FallAlert Banner" width="100%">
+</p>
 
-An AI-powered real-time fall detection and emergency alert system built using ESP32, MPU6050, GPS, TensorFlow Lite, Node.js, MongoDB, and React.
+<h1 align="center">FallAlert</h1>
 
-The system continuously monitors motion data, detects fall events using machine learning, and instantly sends alerts along with location information to a cloud-connected monitoring dashboard.
+<p align="center">
+  Intelligent Wearable Fall Detection and Emergency Alert System
+</p>
 
----
-
-## Features
-
-* Real-time fall detection
-* ESP32-based edge processing
-* MPU6050 motion sensing
-* GPS location tracking
-* TensorFlow Lite model deployment
-* Cloud-connected backend
-* MongoDB data storage
-* React monitoring dashboard
-* Historical event tracking
-* Live alert notifications
+<p align="center">
+  ESP32 • MPU6050 • IoT • Machine Learning • React • MongoDB
+</p>
 
 ---
 
-## Technology Stack
+# Overview
 
-### Hardware
+FallAlert is an intelligent wearable safety system designed to detect fall incidents in real time and immediately notify caregivers or monitoring systems.
+
+The device continuously monitors body motion using an MPU6050 accelerometer and gyroscope connected to an ESP32 microcontroller. By analyzing acceleration magnitude and sudden movement variations, FallAlert can identify potential fall events and automatically trigger emergency actions.
+
+Once a fall is detected, the system:
+
+* Activates a local buzzer alert
+* Sends cloud-based emergency notifications
+* Stores incident information in MongoDB
+* Updates a React monitoring dashboard
+* Sends sensor data to a Machine Learning API for further analysis
+
+The primary objective of the project is to reduce emergency response time and improve safety for elderly individuals, patients, and other vulnerable users.
+
+---
+
+# Features
+
+✅ Real-Time Fall Detection
+
+✅ Motion Analysis using MPU6050
+
+✅ ESP32 Edge Processing
+
+✅ Emergency Cloud Alerts
+
+✅ Machine Learning Integration
+
+✅ MongoDB Event Storage
+
+✅ React Monitoring Dashboard
+
+✅ Local Buzzer Alarm
+
+✅ REST API Communication
+
+✅ Expandable IoT Architecture
+
+---
+
+# System Architecture
+
+<p align="center">
+  <img src="docs/Architecture/System Architecture.png" width="900">
+</p>
+
+---
+
+# Working Principle
+
+## Motion Data Acquisition
+
+The MPU6050 continuously captures accelerometer and gyroscope readings.
+
+Collected sensor values:
+
+* Ax
+* Ay
+* Az
+* Gx
+* Gy
+* Gz
+
+---
+
+## Acceleration Magnitude Calculation
+
+The ESP32 calculates motion intensity using:
+
+Magnitude = √(Ax² + Ay² + Az²)
+
+This provides a single value representing overall body movement.
+
+---
+
+## Motion Change Detection
+
+The system compares current magnitude with the previous reading.
+
+Difference = Current Magnitude − Previous Magnitude
+
+A potential fall is detected when:
+
+* Magnitude > 2.3
+* Difference > 0.4
+* Cooldown period > 5 seconds
+
+These thresholds reduce false positives generated during normal activities.
+
+---
+
+## Fall Event Response
+
+When a fall is detected:
+
+1. Buzzer activates
+2. Cloud alert is transmitted
+3. Sensor data is sent to the Machine Learning API
+4. Event is stored in MongoDB
+5. Dashboard updates in real time
+
+---
+
+# Detection Workflow
+
+<p align="center">
+  <img src="docs/diagrams/workflow.png" width="800">
+</p>
+
+---
+
+# Hardware Components
+
+| Component       | Purpose                    |
+| --------------- | -------------------------- |
+| ESP32 Dev Board | Main Controller            |
+| MPU6050         | Accelerometer & Gyroscope  |
+| SIM800 / SIM900 | GSM Communication          |
+| Buzzer          | Local Alert                |
+| Li-ion Battery  | Portable Power             |
+| NEO-6M GPS      | Optional Location Tracking |
+
+---
+
+# Technology Stack
+
+## Embedded Systems
 
 * ESP32
-* MPU6050
-* GPS Module
+* Arduino Framework
+* C++
 
-### Machine Learning
+## Machine Learning
 
 * Python
-* TensorFlow
 * TensorFlow Lite
 * Scikit-learn
 
-### Backend
+## Backend
 
 * Node.js
 * Express.js
 * MongoDB
-* Socket.IO
 
-### Frontend
+## Frontend
 
 * React
 * Axios
-* Socket.IO Client
+* Socket.IO
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```text
-backend/
-frontend/
-esp32/
-machine-learning/
-docs/
-
-README.md
-LICENSE
-CONTRIBUTING.md
-CHANGELOG.md
-.gitignore
+Fall Detection System
+│
+├── backend/
+├── frontend/
+├── esp32/
+├── machine-learning/
+├── docs/
+│
+├── README.md
+├── LICENSE
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+└── .gitignore
 ```
 
 ---
 
-## Hardware Setup
+# Dashboard Preview
 
-| Component  | Purpose           |
-| ---------- | ----------------- |
-| ESP32      | Main Controller   |
-| MPU6050    | Motion Detection  |
-| GPS Module | Location Tracking |
+## Main Dashboard
+
+![Dashboard](docs/screenshots/Dashboard Home.png)
 
 ---
 
-## Installation
+## Alert Monitoring
 
-### Backend
+![Alerts](docs/screenshots/Alerts Page.png)
+
+---
+
+## Fall History
+
+![Device Status](docs/screenshots/Fall History.png)
+
+---
+
+## Circuit Image
+
+![Circuit](Docs\Diagrams\Circuit image.png)
+
+---
+
+## Data Flow 
+
+![Circuit](Docs\Diagrams\Dataflow.png)
+
+---
+
+
+# Installation
+
+## Backend
 
 ```bash
 cd backend
@@ -89,7 +231,7 @@ npm install
 npm start
 ```
 
-### Frontend
+## Frontend
 
 ```bash
 cd frontend
@@ -97,62 +239,57 @@ npm install
 npm start
 ```
 
-### ESP32
+## ESP32 Firmware
 
-1. Open Arduino IDE
+1. Install Arduino IDE
 2. Install ESP32 Board Package
-3. Install required libraries
-4. Upload firmware to ESP32
+3. Install MPU6050 Library
+4. Configure Wi-Fi Credentials
+5. Upload Firmware
 
 ---
 
-## Machine Learning Workflow
+# Applications
 
-Dataset Collection
-
-↓
-
-Data Preprocessing
-
-↓
-
-Model Training
-
-↓
-
-TensorFlow Lite Conversion
-
-↓
-
-ESP32 Deployment
-
-↓
-
-Real-Time Inference
+* Elderly Care
+* Hospitals
+* Rehabilitation Centers
+* Smart Healthcare
+* Personal Safety Monitoring
+* IoT Healthcare Solutions
 
 ---
 
-## Future Improvements
+# Future Enhancements
 
-* SMS Alerts
-* WhatsApp Notifications
+* Live GPS Tracking
+* SMS Notifications
+* WhatsApp Alerts
 * Mobile Application
 * Battery Monitoring
-* Multi-device Support
-* Advanced Activity Recognition
+* Multi-Device Management
+* AI Activity Recognition
 
 ---
 
-## License
+# Results
 
-This project is licensed under the MIT License.
+The system successfully detects high-impact fall events using onboard motion analysis and cloud-assisted processing.
+
+The architecture demonstrates how embedded systems, IoT communication, cloud services, and machine learning can be integrated into a practical healthcare monitoring solution.
 
 ---
 
-## Author
+# Author
 
-Nithin Goud
+## K Nithin KUMAR Goud
 
 Bachelor of Engineering
 
-Embedded Systems | IoT | Machine Learning
+Embedded Systems • IoT • Machine Learning
+
+---
+
+# License
+
+This project is licensed under the MIT License.
