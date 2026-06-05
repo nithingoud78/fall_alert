@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="docs/Banner/Banner.png" alt="FallAlert Banner">
+  <img src="Docs/Banner/Banner.jpg" alt="FallAlert Banner">
 </p>
